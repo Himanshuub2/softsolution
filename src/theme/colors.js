@@ -1,0 +1,6 @@
+export const highBrown = "#a83400"
+export const midBrown = "#c25d31"
+export const lowBrown = "#ffd0bc"
+export const fontGreen = "#1c691c"
+export const fontYellow = "#ffc700"
+export const darkBrown = "#6e5546"
