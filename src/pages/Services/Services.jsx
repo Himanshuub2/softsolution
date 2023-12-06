@@ -21,7 +21,6 @@ const Box = styled("div")();
 const Text = styled("h1")({
   color: fontGreen,
   marginBottom: "6rem",
-
   "@media (max-width:1200px)": {
     fontSize: "1.5rem",
     marginBottom: "1rem",

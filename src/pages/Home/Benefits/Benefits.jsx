@@ -14,7 +14,7 @@ const Wrapper = styled("div")({
 });
 const Heading = styled("h1")({
   fontSize: "3rem",
-  color: "black",
+  color: "#482c1b",
   marginTop: "-0.3rem",
   marginBottom: "-0.2rem",
 
@@ -28,7 +28,6 @@ const BenefitWrap = styled("div")({
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-around",
-  
   width: "100%",
   height: "90%",
 
@@ -47,7 +46,7 @@ const Benefit = styled("div")({
   flexDirection: "column",
   alignItems: "center",
   justifyContent:'center',
-
+  color:"#6b4731",
   ":hover":{
     cursor:"pointer",
     color:fontYellow
@@ -55,6 +54,8 @@ const Benefit = styled("div")({
 
   
 });
+
+
 function Benefits() {
   const isDesktop = useMediaQuery(desktop);
 
@@ -63,19 +64,20 @@ function Benefits() {
       <Heading>Benefits</Heading>
 
       <BenefitWrap>
-        {benefitsData.map((item) => (
+        {benefitsData.map((item,index) => (
           <>
-            <Benefit>
+            <Benefit key={index+item.description}>
               {isDesktop ? (
-                <div> {item.icon("6rem")}</div>
+                <div key={index+item.description}> {item.icon("6rem")}</div>
               ) : (
-                <div>{item.icon("4rem")}</div>
+                <div key={index+item.description}>{item.icon("4rem")}</div>
               )}
-              <h1 style={isDesktop?{fontSize:"1.5rem"}:{fontSize:"1rem"}}>{item.description}</h1>
+              <h1 key={index+item.description} style={isDesktop?{fontSize:"1.5rem"}:{fontSize:"1rem"}}>{item.description}</h1>
             </Benefit>
           </>
         ))}
       </BenefitWrap>
+     
     </Wrapper>
   );
 }

@@ -1,9 +1,12 @@
-import { styled } from "@mui/material";
+import { Link, styled } from "@mui/material";
 import useMediaQuery from "../../responsive/responsive";
-import { desktop, mobile } from "../../responsive/screens";
-import { highBrown, lowBrown, midBrown,fontYellow } from "../../theme/colors";
+import { desktop } from "../../responsive/screens";
+import {  midBrown,fontYellow } from "../../theme/colors";
 import Logo from "../Header/Logo/Logo.jsx";
 import { footerdata } from "./footerdata";
+import { socialdata } from "../../pages/Contactus/contactdata";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 const Wrapper = styled("div")({
@@ -13,7 +16,7 @@ const Wrapper = styled("div")({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-
+  
   "@media (max-width:1200px)": {
     height: "50%",
   },
@@ -29,7 +32,12 @@ const Section = styled("div")({
 const Part = styled("div")({
   display: "flex",
   flexDirection: "column",
+  alignItems:"center",
   color: "white",
+  height:"21++rem",
+  "&>*":{
+    marginBottom:"2rem"
+  },
 
   "@media (max-width:1200px)": {
     marginTop: "1rem",
@@ -54,9 +62,36 @@ const Item = styled('p')({
     }
 })
 
+const CustomLink = styled(Link)({
+
+  
+  color:"white",
+  marginRight:"15px",
+  ":hover":{
+    color:fontYellow
+  },
+  "@media (max-width:1200px)": {
+    marginRight:"10px",
+  },
+
+})
+
 export default function Footer() {
   const isDesktop = useMediaQuery(desktop);
+  const navigate = useNavigate()
 
+  function handleClick(item){
+    if(item==='Services'){
+      navigate("/services")
+    }
+    else{
+      navigate("/contact")
+    }
+  }
+
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  },[handleClick])
   return (
     <Wrapper>
       <Section>
@@ -69,11 +104,25 @@ export default function Footer() {
             <Heading>{key}</Heading>
             {value.map((item) => (
               <>
-                <Item key={item}>{item}</Item>
+                <Item key={item} onClick={()=>handleClick(key)}>{item}</Item>
               </>
             ))}
           </Part>
         ))}
+      </Section>
+
+      <Section style={{width:"30%",marginTop:'-1rem'}}>
+
+        {
+          socialdata.map(item=>(
+            <>
+            <CustomLink href={item.linkUrl} target="_blank" >
+            {item.profile}
+            </CustomLink>
+            </>
+          ))
+        }
+     
       </Section>
 
       <Section>

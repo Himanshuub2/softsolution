@@ -1,10 +1,11 @@
 import { styled } from "@mui/material";
-import { highBrown, lowBrown, fontYellow, fontGreen } from "../../theme/colors";
+import { lowBrown, fontYellow, darkBrown, highBrown } from "../../theme/colors";
 import "../../App.css";
 import ImageCarousel from "../../components/Carousel/Carousel";
 import Benefits from "./Benefits/Benefits";
 import Products from "./Products/Products";
 import OurProjects from "./OurProjects/OurProjects";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled("div")({
   height: "160rem",
@@ -16,7 +17,7 @@ const Wrapper = styled("div")({
   paddingTop: "2rem",
 
   "@media (max-width:1200px)": {
-    height: "140rem",
+    height: "130rem",
   },
 
   "&>*": {
@@ -74,6 +75,24 @@ const Button = styled("button")({
     fontSize: "14px",
   },
 });
+
+const StyledMarquee = styled('marquee')({
+  background:fontYellow,
+  height:"4rem",
+  display:"flex",
+  flexDirection:"column",
+  justifyContent:'center',
+  color:darkBrown,
+  border:`2px solid ${darkBrown}`,
+  fontSize:"25px",
+
+  
+  "@media (max-width:1200px)": {
+    marginTop:"3rem",
+    fontSize:"20px",
+    height:"3rem"
+  },
+}) 
 export default function Home() {
   return (
     <Wrapper>
@@ -82,11 +101,17 @@ export default function Home() {
       <Heading>
         <h1>Your Timber Oasis: </h1>
         <h1 style={{ color: "white" }}>Cottages, Gazebos, and Cabins</h1>
-        <Button>Contact Us</Button>
+        <Button>
+          <Link to="/contact" style={{ textDecoration: "none" }}>
+            Contact Us
+          </Link>
+        </Button>
       </Heading>
 
       <Benefits />
-
+      <StyledMarquee>
+        <h3 >Services we provide: Wooden Cottages , Gazebo , Tensile Shed, Utility Cabins etc</h3>
+      </StyledMarquee>
       <Products />
 
       <OurProjects />

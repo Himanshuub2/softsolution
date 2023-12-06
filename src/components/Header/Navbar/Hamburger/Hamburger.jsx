@@ -4,28 +4,22 @@ import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import Logo from "../../Logo/Logo";
+
 const HamburgerLines = styled("div")({
-  width: "15px",
-  height: "2px",
+  width: "30px",
+  height: "4px",
   background: "white",
 });
 
-const Heading = styled("h1")({
-  paddingLeft: "15px",
-  color: "green",
-});
 
-const SubHeading = styled("h3")({
-  paddingLeft: "15px",
-  marginTop: "-24px",
-});
 
 const HamburgerMenu = styled("div")({
   display: "flex",
   flexDirection: "column",
   marginLeft: "4rem",
   "&>*": {
-    marginBottom: "2px",
+    marginBottom: "4px",
   },
 });
 
@@ -36,7 +30,7 @@ const List = styled("li")({
     marginTop: "1px",
     listStyle: "none",
     width: "8rem",
-    padding: "15px",
+    padding: "10px 0 10px 25px",
     textDecoration: "none",
     ":hover": {
       cursor: "pointer",
@@ -61,12 +55,13 @@ export default function Hamburger({ list }) {
         </HamburgerMenu>
       </Button>
       <Drawer open={state} onClose={() => toggleDrawer(false)}>
-        <Heading>Soft</Heading>
-        <SubHeading> Solution</SubHeading>
+        {/* <Heading>Soft</Heading>
+        <SubHeading> Solution</SubHeading> */}
 
+        <Logo/>
         <List>
           {list.map((item) => (
-            <Link to={item.to} key={item}>
+            <Link to={item.to} key={item} onClick={() => toggleDrawer(false)}>
               {item.name}
             </Link>
           ))}

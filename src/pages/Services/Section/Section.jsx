@@ -3,7 +3,7 @@ import { styled } from "@mui/material";
 // import { sectionData } from "./sectiondata"
 import PropTypes from "prop-types";
 import useMediaQuery from "../../../responsive/responsive";
-import { desktop, mobile } from "../../../responsive/screens";
+import { desktop } from "../../../responsive/screens";
 
 const Wrapper = styled("div")({
   display: "flex",
@@ -78,7 +78,7 @@ const RightBox = styled("div")({
   },
 });
 function Section(props) {
-  console.log(props);
+  
 
   const isDesktop = useMediaQuery(desktop);
 

@@ -1,32 +1,29 @@
+import { useNavigate } from "react-router-dom";
+import softLogo from "../../../assets/soft_solution_logo.png";
+import { desktop } from "../../../responsive/screens";
+import useMediaQuery from "../../../responsive/responsive";
+import {styled} from "@mui/material";
 
-import {styled} from "@mui/material"
-import { fontGreen } from '../../../theme/colors';
 
+const LogoImage = styled('img')({
+  ":hover":{
+    cursor:"pointer"
+  }
+})
 
-const LogoHeading = styled("div")({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    alignSelf: "start",
-    marginTop: "-25px",
-  });
 
 function Logo() {
-  return (
-    <LogoHeading>
-    <h1
-      style={{
-        color: fontGreen,
-        marginBottom: "-5px",
-        fontSize: "3rem",
-        fontWeight: "900",
-      }}
-    >
-      Soft
-    </h1>
-    <span>Solution</span>
-  </LogoHeading>
-  )
+  const isDisplay = useMediaQuery(desktop);
+
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate("/");
+  }
+  return isDisplay ? (
+    <LogoImage src={softLogo} onClick={handleClick} alt="Logo" width={120} />
+  ) : (
+    <LogoImage src={softLogo} onClick={handleClick} alt="Logo" width={80} />
+  );
 }
 
-export default Logo
+export default Logo;

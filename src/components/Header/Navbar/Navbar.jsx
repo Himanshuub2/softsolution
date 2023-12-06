@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import { highBrown, lowBrown } from "../../../theme/colors.js";
+import { darkBrown, fontGreen, fontYellow, highBrown, lowBrown } from "../../../theme/colors.js";
 import useMediaQuery from "../../../responsive/responsive.js";
 import { desktop } from "../../../responsive/screens.js";
 import Hamburger from "./Hamburger/Hamburger.jsx";
@@ -26,8 +26,20 @@ const List = styled("ul")({
     paddingRight: "2rem",
     textDecoration:"none",
     color:"white",
-    fontSize:"20px"
+    fontSize:"20px",
+    ":hover":{
+      color:fontYellow,
+      fontWeight:"700",
+      textDecoration:"underline"
+      
+    },
+    ":active":{
+      color:fontYellow
+    }
   },
+
+  
+  
 });
 
 
@@ -36,16 +48,13 @@ export default function Navbar() {
   const list = [
     {
     name:"Home",
-    to:"/home"
+    to:"/"
     }, 
     {
       name:"Services",
       to:"/services"
     }, 
-    {
-      name:"Projects",
-      to:"/projects"
-    },
+
     {
       name:"About Us",
       to:"/about"
@@ -53,7 +62,7 @@ export default function Navbar() {
     {
       name:"Contact Us",
       to:"/contact"
-    },   
+    },     
   ]
   
  

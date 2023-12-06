@@ -15,7 +15,7 @@ function ImageCarousel() {
   const isDesktop =  useMediaQuery(desktop)
   return (
     <Carousel
-      width={isDesktop?1300:300}
+      width={isDesktop?1300:330}
       autoPlay={true}
       infiniteLoop={true}
       showArrows={true}
